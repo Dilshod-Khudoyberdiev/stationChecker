@@ -1,0 +1,440 @@
+﻿:root {
+    /* Brand */
+    --sc-primary: #e2001a; /* HVV / DB red */
+    --sc-primary-dark: #b90015;
+    --sc-secondary: #111111; /* near-black accent */
+    /* Utility palette */
+    --sc-success: #007e3e;
+    --sc-info: #0064c8;
+    --sc-warning: #ffcc00;
+    --sc-danger: #e2001a;
+    /* Grays */
+    --sc-gray-100: #f8f9fa;
+    --sc-gray-900: #212529;
+    /* Radii & shadow */
+    --sc-radius: .75rem;
+    --sc-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --sc-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    /* Layout */
+    --sc-body-bg: var(--sc-gray-100);
+    --sc-body-color: var(--sc-gray-900);
+}
+
+/* --------------------------------------------------
+   Base resets
+-------------------------------------------------- */
+*, ::before, ::after {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    font-family: Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background-color: var(--sc-body-bg);
+    color: var(--sc-body-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+
+/* Small font-size helper (Bootstrap stops at .75rem) */
+.fs-9 {
+    font-size: .8rem
+}
+
+/* --------------------------------------------------
+   Layout frame
+-------------------------------------------------- */
+.page-container {
+    background: #fff;
+    min-height: calc(100vh - 120px);
+    will-change: transform; /* subtle elevation */
+}
+
+@media (min-width:992px) {
+    .page-container {
+        max-width: 1400px;
+        margin-inline: auto;
+        border-inline: 1px solid var(--bs-border-color-translucent,#dee2e6);
+        box-shadow: var(--sc-shadow-sm);
+        padding-inline: 2rem;
+    }
+}
+
+@media (min-width:1920px) {
+    .page-container {
+        max-width: 1600px
+    }
+}
+
+/* --------------------------------------------------
+   Navbar & Hero
+-------------------------------------------------- */
+.navbar-brand {
+    font-weight: 700
+}
+
+    .navbar-brand i {
+        color: var(--sc-primary) !important
+    }
+
+.hero {
+    padding: 6rem 1.5rem;
+    background: linear-gradient(135deg,var(--sc-primary)0%,var(--sc-primary-dark)100%);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+        opacity: .15;
+    }
+
+    .hero .btn-secondary {
+        background: #fff;
+        color: var(--sc-primary-dark);
+        border: none;
+    }
+
+        .hero .btn-secondary:hover {
+            background: var(--sc-warning);
+            color: #000;
+        }
+
+/* --------------------------------------------------
+   Cards & interactive utilities
+-------------------------------------------------- */
+.card {
+    border-radius: var(--sc-radius)
+}
+
+.hover-lift {
+    transition: transform .2s ease,box-shadow .2s ease
+}
+
+    .hover-lift:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--sc-shadow);
+    }
+
+.fade-in {
+    animation: fade-in .6s ease-out both
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+/* --------------------------------------------------
+   Forms & Buttons
+-------------------------------------------------- */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--sc-primary);
+    box-shadow: 0 0 0 .25rem rgba(226,0,26,.25);
+}
+
+.btn-primary {
+    background-color: var(--sc-primary);
+    border-color: var(--sc-primary);
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: var(--sc-primary-dark);
+        border-color: var(--sc-primary-dark);
+    }
+
+.btn-outline-primary {
+    color: var(--sc-primary);
+    border-color: var(--sc-primary);
+}
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+        background-color: var(--sc-primary);
+        color: #fff;
+    }
+
+/* --------------------------------------------------
+   Status badges
+-------------------------------------------------- */
+.badge {
+    padding: .35em .5em;
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+    .badge.status-offen {
+        background: var(--sc-warning);
+        color: #000;
+    }
+
+    .badge.status-in-bearbeitung {
+        background: var(--sc-info);
+        color: #fff;
+    }
+
+    .badge.status-gelöst {
+        background: var(--sc-success);
+        color: #fff;
+    }
+
+    .badge.status-duplikat {
+        background: #6c757d;
+        color: #fff;
+    }
+
+/* --------------------------------------------------
+   Tables
+-------------------------------------------------- */
+.table thead th {
+    text-transform: uppercase;
+    font-size: .75rem;
+    letter-spacing: .5px;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.table-hover > tbody > tr {
+    transition: background-color .15s ease-in-out
+}
+
+    .table-hover > tbody > tr:hover {
+        background-color: #fdfdfe
+    }
+
+/* --------------------------------------------------
+   Skeleton loader
+-------------------------------------------------- */
+.skeleton-card {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: var(--sc-radius);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-line {
+    background: #e9ecef;
+    border-radius: .25rem;
+    height: 1rem;
+    margin-bottom: .75rem;
+}
+
+    .skeleton-line.short {
+        width: 40%
+    }
+
+    .skeleton-line.medium {
+        width: 70%
+    }
+
+    .skeleton-line.h-2 {
+        height: 2rem
+    }
+
+.skeleton-card::after,
+.skeleton-row td::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg,rgba(245,245,245,0)0,rgba(245,245,245,.5)50%,rgba(245,245,245,0)100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%)
+    }
+}
+
+/* ===== Guest card overlay ==================================================== */
+.guest-card {
+    position: relative;
+    border-radius: var(--sc-radius)
+}
+
+.login-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,.9);
+    border-radius: inherit;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+.guest-card:hover .login-overlay {
+    opacity: 1
+}
+
+/* kleiner Text im Overlay */
+.login-overlay p {
+    margin-bottom: .5rem;
+    font-size: .9rem
+}
+
+.login-overlay .btn {
+    min-width: 7rem
+}
+
+/* Admin-Aktionen im Modal */
+#admin-actions select {
+    min-width: 8rem
+}
+
+#admin-actions .btn-outline-danger {
+    --bs-btn-hover-bg: #e2001a1a
+}
+/* Pointer cursor on interactive rows / cards */
+.table-hover > tbody > tr:hover,
+.card[role="button"],
+.hover-lift {
+    cursor: pointer;
+}
+
+/* ====================================================================
+   Same-height bar when an event has no uploaded image
+   ==================================================================== */
+.card-no-photo {
+    height: 220px; /* identical to real photo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa; /* very light grey         */
+    border-bottom: 1px solid #dee2e6; /* matches image bottom    */
+    color: #6c757d; /* muted text              */
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+/* wrapper keeps photo + fallback same height */
+.card-photo-wrapper {
+    height: 220px; /* unified height  */
+    overflow: hidden; /* cut if img crops*/
+}
+
+    .card-photo-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+/* 220 px placeholder keeps card heights aligned */
+.card-no-photo {
+    height: 220px;
+    background: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    color: #6c757d;
+}
+
+/* ─── Profil‐Icon in der Navbar ─────────────────────────────────────────── */
+.profile-btn {
+    margin: 0 .5rem;
+    padding: .375rem .75rem;
+}
+
+    .profile-btn i.bi-person-circle {
+        font-size: 1.25rem;
+        vertical-align: middle;
+    }
+
+/* ─── Profile Page Styling ───────────────────────────────────────────────── */
+.profile-page-container {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.profile-card {
+    padding: 2rem;
+    background: #fff;
+    border-radius: var(--sc-radius);
+    box-shadow: var(--sc-shadow-sm);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+    .profile-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--sc-shadow);
+    }
+
+    .profile-card h1 {
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+        color: var(--sc-secondary);
+    }
+
+    .profile-card .form-label {
+        font-weight: 500;
+    }
+
+    .profile-card .input-group .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    /* navbar button spacing tweak */
+    .navbar .btn + .btn {
+        margin-left: .5rem;
+    }
+
+/* On mobile, ensure the icon+text fits */
+@media (max-width: 876px) {
+    .navbar .bi-person-circle {
+        font-size: 1.1rem;
+    }
+
+    .navbar span.d-none.d-lg-inline {
+        display: none !important;
+    }
+}
+
+/* ─── Compact nav buttons on small screens ──────────────────────────────── */
+@media (max-width: 876px) {
+    .navbar .btn-new-problem,
+    .navbar .profile-btn,
+    .navbar #logout {
+        padding: .3rem .65rem;
+        font-size: .9rem;
+    }
+
+    .navbar .btn i {
+        margin-right: 0 !important;
+    }
+}
+
+/* ensure collapsed navbar buttons keep equal width */
+@media (max-width: 876px) {
+    .navbar .btn-new-problem,
+    .navbar .profile-btn,
+    .navbar #logout {
+        width: 100%;
+        margin-bottom: .5rem;
+    }
+}
