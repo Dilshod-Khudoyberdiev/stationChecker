@@ -105,39 +105,6 @@ PostgreSQL Database
 * Git
 * (Optional) Static HTTP server
 
-### **Setup Steps**
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Dilshod-Khudoyberdiev/stationChecker
-   ```
-2. Create a PostgreSQL database.
-3. Run EF Core migrations.
-4. Add an admin:
-
-   * Insert a row into `UserRoles` with the Admin role.
-5. Configure `appsettings.json`:
-
-   * Database connection string
-   * Secrets
-   * JWT keys (optional)
-6. Start the backend:
-
-   ```bash
-   dotnet run
-   ```
-7. Open the frontend (open `index.html` or serve it).
-8. Test the full workflow:
-
-   * Register
-   * Log in
-   * Submit an issue
-   * Check **Meine Meldungen**
-   * Use Admin dashboard to moderate
-
----
-
 ## **Known Limitations**
 
 * Not deployed to production
